@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { compose } from "recompose";
+import { compose as pipe } from "recompose";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -33,4 +33,4 @@ function handlers(WrappedComponent) {
   };
 }
 
-export default compose(connect(mapStateToProps, mapDispatchToProps), handlers);
+export default pipe(connect(mapStateToProps, mapDispatchToProps), handlers);
