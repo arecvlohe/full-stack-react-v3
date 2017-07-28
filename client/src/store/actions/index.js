@@ -18,3 +18,19 @@ export function fetchTodos() {
       });
   };
 }
+
+export function fetchTodo(id) {
+  return function(dispatch) {
+    dispatch({ type: msg.FETCH_TODO_REQUEST });
+    return axios
+      .get(api.get.todo(id))
+      .then(response => {
+        dispatch({ type: msg.FETCH_TODO_SUCCESS, payload: response });
+        return response;
+      })
+      .catch(e => {
+        dispatch({ type: msg.FETCH_TODO_FAILURE });
+        return e;
+      });
+  };
+}
